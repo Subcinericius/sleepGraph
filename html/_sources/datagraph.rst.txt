@@ -1,0 +1,12 @@
+datagraph module
+================
+
+.. automodule:: datagraph.graph
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+.. automodule:: errorHandling
+   :members:
+   :show-inheritance:
+   :inherited-members:

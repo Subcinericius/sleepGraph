@@ -1,0 +1,775 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>datagraph module &#8212; PythonGraphing 1.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to PythonGraphing’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-datagraph.graph">
+<span id="datagraph-module"></span><h1>datagraph module<a class="headerlink" href="#module-datagraph.graph" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="datagraph.graph.Categorical">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datagraph.graph.</span></span><span class="sig-name descname"><span class="pre">Categorical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Categorical"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Categorical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datagraph.graph.Graph" title="datagraph.graph.Graph"><code class="xref py py-class docutils literal notranslate"><span class="pre">datagraph.graph.Graph</span></code></a></p>
+<p>Categorical graph class that inherits all of the Graph classes’ attributes and methods and enables the graphing of
+categorical data. The attributes of the class should never be directly accessed. They should instead be updated
+through the update_vars() method and accessed through the <a href="#id1"><span class="problematic" id="id2">get_</span></a>… functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> – stores the labels use to name the different classes of data</p></li>
+<li><p><strong>kwargs</strong> – <dl class="field-list simple">
+<dt class="field-odd">keyword data</dt>
+<dd class="field-odd"><p>stores the input data to graph defaults to [None]</p>
+</dd>
+<dt class="field-even">keyword data_y</dt>
+<dd class="field-even"><p>stores the y-axis data to graph defaults to [None]</p>
+</dd>
+<dt class="field-odd">keyword data_x</dt>
+<dd class="field-odd"><p>stores the x-axis data to graph defaults to [None]</p>
+</dd>
+<dt class="field-even">keyword title_x</dt>
+<dd class="field-even"><p>stores the x-axis title defaults to [“”]</p>
+</dd>
+<dt class="field-odd">keyword title_y</dt>
+<dd class="field-odd"><p>stores the y-axis title defaults to [“”]</p>
+</dd>
+<dt class="field-even">keyword title_main</dt>
+<dd class="field-even"><p>stores the main title for the graph defaults to [“”]</p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a Categorical object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>object</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Categorical.get_data">
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Categorical.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return Graphs’ data attribute</p>
+<p>The method checks if the data in not None and is of type list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Categorical.get_data_x">
+<span class="sig-name descname"><span class="pre">get_data_x</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Categorical.get_data_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ data_x attribute</p>
+<p>The method checks if the data in not None and is of type list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_x attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Categorical.get_data_y">
+<span class="sig-name descname"><span class="pre">get_data_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Categorical.get_data_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ data_y attribute</p>
+<p>The method checks if the data in not None and is of type list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_y attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Categorical.get_labels">
+<span class="sig-name descname"><span class="pre">get_labels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Categorical.get_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Categorical.get_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the labels variable to see if it is not None, print warning and returns the attribute.
+:return: self.labels</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Categorical.get_title_main">
+<span class="sig-name descname"><span class="pre">get_title_main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Categorical.get_title_main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ title_main attribute</p>
+<p>The method checks if the the title_main attribute is a non-empty string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_main attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Categorical.get_title_x">
+<span class="sig-name descname"><span class="pre">get_title_x</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Categorical.get_title_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ title_x attribute</p>
+<p>The method checks if the the title_x attribute is a non-empty string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_x attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Categorical.get_title_y">
+<span class="sig-name descname"><span class="pre">get_title_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Categorical.get_title_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ title_y attribute</p>
+<p>The method checks if the the title_y attribute is a non-empty string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_y attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Categorical.graph_bar">
+<span class="sig-name descname"><span class="pre">graph_bar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Categorical.graph_bar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Categorical.graph_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a bar graph from a combination of the data entered and the attributes of the Categorical Object.
+This method will call the update_vars() method with the kwargs inputted.
+:param kwargs:</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">keyword data</dt>
+<dd class="field-odd"><p>stores the input data to graph defaults to [None]</p>
+</dd>
+<dt class="field-even">keyword title_x</dt>
+<dd class="field-even"><p>stores the x-axis title defaults to [“”]</p>
+</dd>
+<dt class="field-odd">keyword title_y</dt>
+<dd class="field-odd"><p>stores the y-axis title defaults to [“”]</p>
+</dd>
+<dt class="field-even">keyword title_main</dt>
+<dd class="field-even"><p>stores the main title for the graph defaults to [“”]</p>
+</dd>
+<dt class="field-odd">keyword labels</dt>
+<dd class="field-odd"><p>stores the labels use to name the different classes of data</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Nothing is returned</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Categorical.graph_pie">
+<span class="sig-name descname"><span class="pre">graph_pie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Categorical.graph_pie"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Categorical.graph_pie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a pie graph using a combination of the data entered and the preset attributes of the Categorical
+class.
+This method will call the update_vars() method with the kwargs inputted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – <dl class="field-list simple">
+<dt class="field-odd">keyword data</dt>
+<dd class="field-odd"><p>stores the input data to graph defaults to [None]</p>
+</dd>
+<dt class="field-even">keyword title_main</dt>
+<dd class="field-even"><p>stores the main title for the graph defaults to [“”]</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Nothing is returned</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Categorical.set_titles">
+<span class="sig-name descname"><span class="pre">set_titles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Categorical.set_titles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the titles of the graph that is being created</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – the temporary pyplot plot object</p></li>
+<li><p><strong>title</strong> – the main title of the graph</p></li>
+<li><p><strong>title_y</strong> – the y-axis title of the graph defaults to [“”]</p></li>
+<li><p><strong>title_x</strong> – the x-axis title of the graph defaults to [“”]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ax pyplot plot object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Categorical.update_vars">
+<span class="sig-name descname"><span class="pre">update_vars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Categorical.update_vars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Categorical.update_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the attributes of the categorical Graph object with inputted kwargs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – <dl class="field-list simple">
+<dt class="field-odd">keyword data</dt>
+<dd class="field-odd"><p>stores the input data to graph defaults to [None]</p>
+</dd>
+<dt class="field-even">keyword data_y</dt>
+<dd class="field-even"><p>stores the y-axis data to graph defaults to [None]</p>
+</dd>
+<dt class="field-odd">keyword data_x</dt>
+<dd class="field-odd"><p>stores the x-axis data to graph defaults to [None]</p>
+</dd>
+<dt class="field-even">keyword title_x</dt>
+<dd class="field-even"><p>stores the x-axis title defaults to [“”]</p>
+</dd>
+<dt class="field-odd">keyword title_y</dt>
+<dd class="field-odd"><p>stores the y-axis title defaults to [“”]</p>
+</dd>
+<dt class="field-even">keyword title_main</dt>
+<dd class="field-even"><p>stores the main title for the graph defaults to [“”]</p>
+</dd>
+<dt class="field-odd">keyword labels</dt>
+<dd class="field-odd"><p>stores the labels use to name the different classes of data</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Nothing returned</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datagraph.graph.Graph">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datagraph.graph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">temp.errorHandling.ErrorHandling</span></code></p>
+<p>This class is a basic Graph object that contains all the relevant attributes of a basic graph</p>
+<p>The Graph class also has get and set methods which should be the only way attributes are accessed or modified of the
+attributes. This class extends the errorHandling class which deals with all the error that each method can generate.
+This class should never be directly accessed. It should be created through other methods</p>
+<ul>
+<li><p><strong>parameters</strong>, <strong>types</strong>, <strong>return</strong>, and <strong>return types</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">param</span> <span class="n">data</span><span class="p">:</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">integer</span> <span class="n">data</span> <span class="n">to</span> <span class="n">be</span> <span class="n">graphed</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">data_y</span><span class="p">:</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">integer</span> <span class="n">data</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">on</span> <span class="n">the</span> <span class="n">y</span><span class="o">-</span><span class="n">axis</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">data_x</span><span class="p">:</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">inter</span> <span class="n">data</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">on</span> <span class="n">the</span> <span class="n">x</span><span class="o">-</span><span class="n">axis</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">title_x</span><span class="p">:</span> <span class="n">the</span> <span class="n">title</span> <span class="k">for</span> <span class="n">the</span> <span class="n">x</span><span class="o">-</span><span class="n">axis</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">title_y</span><span class="p">:</span> <span class="n">the</span> <span class="n">title</span> <span class="k">for</span> <span class="n">the</span> <span class="n">y</span><span class="o">-</span><span class="n">axis</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Graph.get_data">
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Graph.get_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Graph.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return Graphs’ data attribute</p>
+<p>The method checks if the data in not None and is of type list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Graph.get_data_x">
+<span class="sig-name descname"><span class="pre">get_data_x</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Graph.get_data_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Graph.get_data_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ data_x attribute</p>
+<p>The method checks if the data in not None and is of type list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_x attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Graph.get_data_y">
+<span class="sig-name descname"><span class="pre">get_data_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Graph.get_data_y"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Graph.get_data_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ data_y attribute</p>
+<p>The method checks if the data in not None and is of type list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_y attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Graph.get_title_main">
+<span class="sig-name descname"><span class="pre">get_title_main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Graph.get_title_main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Graph.get_title_main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ title_main attribute</p>
+<p>The method checks if the the title_main attribute is a non-empty string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_main attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Graph.get_title_x">
+<span class="sig-name descname"><span class="pre">get_title_x</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Graph.get_title_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Graph.get_title_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ title_x attribute</p>
+<p>The method checks if the the title_x attribute is a non-empty string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_x attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Graph.get_title_y">
+<span class="sig-name descname"><span class="pre">get_title_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Graph.get_title_y"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Graph.get_title_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ title_y attribute</p>
+<p>The method checks if the the title_y attribute is a non-empty string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_y attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Graph.set_titles">
+<span class="sig-name descname"><span class="pre">set_titles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Graph.set_titles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Graph.set_titles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the titles of the graph that is being created</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – the temporary pyplot plot object</p></li>
+<li><p><strong>title</strong> – the main title of the graph</p></li>
+<li><p><strong>title_y</strong> – the y-axis title of the graph defaults to [“”]</p></li>
+<li><p><strong>title_x</strong> – the x-axis title of the graph defaults to [“”]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ax pyplot plot object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Graph.update_vars">
+<span class="sig-name descname"><span class="pre">update_vars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Graph.update_vars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Graph.update_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>updates the attributes of the graph class
+:param kwargs:</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">keyword data</dt>
+<dd class="field-odd"><p>updates the input data to graph defaults to [self.data]</p>
+</dd>
+<dt class="field-even">keyword data_y</dt>
+<dd class="field-even"><p>updates the y-axis data to graph defaults to [self.data_x]</p>
+</dd>
+<dt class="field-odd">keyword data_x</dt>
+<dd class="field-odd"><p>updates the x-axis data to graph defaults to [self.data_y]</p>
+</dd>
+<dt class="field-even">keyword title_x</dt>
+<dd class="field-even"><p>updates the x-axis title defaults to [self.title_main]</p>
+</dd>
+<dt class="field-odd">keyword title_y</dt>
+<dd class="field-odd"><p>updates the y-axis title defaults to [self.title_x]</p>
+</dd>
+<dt class="field-even">keyword title_main</dt>
+<dd class="field-even"><p>updates the main title for the graph defaults to [self.title_y]</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This method returns nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datagraph.graph.Other">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">datagraph.graph.</span></span><span class="sig-name descname"><span class="pre">Other</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Other"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datagraph.graph.Graph" title="datagraph.graph.Graph"><code class="xref py py-class docutils literal notranslate"><span class="pre">datagraph.graph.Graph</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.get_data">
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Other.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return Graphs’ data attribute</p>
+<p>The method checks if the data in not None and is of type list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.get_data_x">
+<span class="sig-name descname"><span class="pre">get_data_x</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Other.get_data_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ data_x attribute</p>
+<p>The method checks if the data in not None and is of type list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_x attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.get_data_y">
+<span class="sig-name descname"><span class="pre">get_data_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Other.get_data_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ data_y attribute</p>
+<p>The method checks if the data in not None and is of type list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_y attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.get_title_main">
+<span class="sig-name descname"><span class="pre">get_title_main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Other.get_title_main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ title_main attribute</p>
+<p>The method checks if the the title_main attribute is a non-empty string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_main attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.get_title_x">
+<span class="sig-name descname"><span class="pre">get_title_x</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Other.get_title_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ title_x attribute</p>
+<p>The method checks if the the title_x attribute is a non-empty string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_x attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.get_title_y">
+<span class="sig-name descname"><span class="pre">get_title_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Other.get_title_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that will check and return the Graphs’ title_y attribute</p>
+<p>The method checks if the the title_y attribute is a non-empty string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the data_y attribute</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.graph_box">
+<span class="sig-name descname"><span class="pre">graph_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Other.graph_box"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Other.graph_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a box plot sing a combination of the data entered and the preset attributes of the Categorical
+class.
+This method will call the update_vars() method with the kwargs inputted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kwargs</strong> – <dl class="field-list simple">
+<dt class="field-odd">keyword data</dt>
+<dd class="field-odd"><p>stores the input data to graph defaults to [None]</p>
+</dd>
+<dt class="field-even">keyword title_x</dt>
+<dd class="field-even"><p>stores the x-axis title defaults to [self.title_x] or [“”]</p>
+</dd>
+<dt class="field-odd">keyword title_y</dt>
+<dd class="field-odd"><p>stores the y-axis title defaults to [self.title_y] or [“”]</p>
+</dd>
+<dt class="field-even">keyword title_main</dt>
+<dd class="field-even"><p>stores the main title for the graph defaults to [self.title_main] or [“”]</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Nothing is returned</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.graph_density">
+<span class="sig-name descname"><span class="pre">graph_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Other.graph_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Other.graph_density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a density plot using a combination of the data entered and the preset attributes of the Categorical
+class.
+This method will call the update_vars() method with the kwargs inputted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fill</strong> – Determines if the graph is shaded in defaults to [False]</p></li>
+<li><p><strong>kwargs</strong> – <dl class="field-list simple">
+<dt class="field-odd">keyword data</dt>
+<dd class="field-odd"><p>stores the input data to graph defaults to [None]</p>
+</dd>
+<dt class="field-even">keyword title_x</dt>
+<dd class="field-even"><p>stores the x-axis title defaults to [self.title_x] or [“”]</p>
+</dd>
+<dt class="field-odd">keyword title_y</dt>
+<dd class="field-odd"><p>stores the y-axis title defaults to [self.title_y] or [“”]</p>
+</dd>
+<dt class="field-even">keyword title_main</dt>
+<dd class="field-even"><p>stores the main title for the graph defaults to [self.title_main] or [“”]</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Nothing is returned</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.graph_loli">
+<span class="sig-name descname"><span class="pre">graph_loli</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Other.graph_loli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Other.graph_loli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a density plot using a combination of the data entered and the preset attributes of the Categorical
+class.
+This method will call the update_vars() method with the kwargs inputted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – <dl class="field-list simple">
+<dt class="field-odd">keyword data</dt>
+<dd class="field-odd"><p>stores the input data to graph defaults to [None]</p>
+</dd>
+<dt class="field-even">keyword title_x</dt>
+<dd class="field-even"><p>stores the x-axis title defaults to [self.title_x] or [“”]</p>
+</dd>
+<dt class="field-odd">keyword title_y</dt>
+<dd class="field-odd"><p>stores the y-axis title defaults to [self.title_y] or [“”]</p>
+</dd>
+<dt class="field-even">keyword title_main</dt>
+<dd class="field-even"><p>stores the main title for the graph defaults to [self.title_main] or [“”]</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Nothing is returned</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.graph_scatter">
+<span class="sig-name descname"><span class="pre">graph_scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Other.graph_scatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Other.graph_scatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a scatter graph using a combination of the data entered and the preset attributes of the Categorical
+class.
+This method will call the update_vars() method with the kwargs inputted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – <dl class="field-list simple">
+<dt class="field-odd">keyword data_y</dt>
+<dd class="field-odd"><p>stores the y-axis data to graph defaults to [self.data_y] or [None]</p>
+</dd>
+<dt class="field-even">keyword data_x</dt>
+<dd class="field-even"><p>stores the x-axis data to graph defaults to [self.data_x] or [None]</p>
+</dd>
+<dt class="field-odd">keyword title_x</dt>
+<dd class="field-odd"><p>stores the x-axis title defaults to [self.title_x] or [“”]</p>
+</dd>
+<dt class="field-even">keyword title_y</dt>
+<dd class="field-even"><p>stores the y-axis title defaults to [self.title_y] or [“”]</p>
+</dd>
+<dt class="field-odd">keyword title_main</dt>
+<dd class="field-odd"><p>stores the main title for the graph defaults to [self.title_main] or [“”]</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.graph_violin">
+<span class="sig-name descname"><span class="pre">graph_violin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/datagraph/graph.html#Other.graph_violin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datagraph.graph.Other.graph_violin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a density plot using a combination of the data entered and the preset attributes of the Categorical
+class.
+This method will call the update_vars() method with the kwargs inputted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – <dl class="field-list simple">
+<dt class="field-odd">keyword data</dt>
+<dd class="field-odd"><p>stores the input data to graph defaults to [None]</p>
+</dd>
+<dt class="field-even">keyword title_x</dt>
+<dd class="field-even"><p>stores the x-axis title defaults to [self.title_x] or [“”]</p>
+</dd>
+<dt class="field-odd">keyword title_y</dt>
+<dd class="field-odd"><p>stores the y-axis title defaults to [self.title_y] or [“”]</p>
+</dd>
+<dt class="field-even">keyword title_main</dt>
+<dd class="field-even"><p>stores the main title for the graph defaults to [self.title_main] or [“”]</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Nothing is returned</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.set_titles">
+<span class="sig-name descname"><span class="pre">set_titles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Other.set_titles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the titles of the graph that is being created</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> – the temporary pyplot plot object</p></li>
+<li><p><strong>title</strong> – the main title of the graph</p></li>
+<li><p><strong>title_y</strong> – the y-axis title of the graph defaults to [“”]</p></li>
+<li><p><strong>title_x</strong> – the x-axis title of the graph defaults to [“”]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ax pyplot plot object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datagraph.graph.Other.update_vars">
+<span class="sig-name descname"><span class="pre">update_vars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datagraph.graph.Other.update_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>updates the attributes of the graph class
+:param kwargs:</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">keyword data</dt>
+<dd class="field-odd"><p>updates the input data to graph defaults to [self.data]</p>
+</dd>
+<dt class="field-even">keyword data_y</dt>
+<dd class="field-even"><p>updates the y-axis data to graph defaults to [self.data_x]</p>
+</dd>
+<dt class="field-odd">keyword data_x</dt>
+<dd class="field-odd"><p>updates the x-axis data to graph defaults to [self.data_y]</p>
+</dd>
+<dt class="field-even">keyword title_x</dt>
+<dd class="field-even"><p>updates the x-axis title defaults to [self.title_main]</p>
+</dd>
+<dt class="field-odd">keyword title_y</dt>
+<dd class="field-odd"><p>updates the y-axis title defaults to [self.title_x]</p>
+</dd>
+<dt class="field-even">keyword title_main</dt>
+<dd class="field-even"><p>updates the main title for the graph defaults to [self.title_y]</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This method returns nothing</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">PythonGraphing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">datagraph module</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to PythonGraphing’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Aidan Southwell.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/datagraph.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
