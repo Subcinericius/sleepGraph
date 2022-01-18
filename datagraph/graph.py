@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 import math
 import seaborn as sns
 from scipy.stats import gaussian_kde
-from temp.errorHandling import *
+from errorHandling import *
 
 
 error = ErrorHandling._handle_error
