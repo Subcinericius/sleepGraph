@@ -1,0 +1,762 @@
+{
+  // Identifier for the project, also used as the URL
+  "id": "sleep",
+
+  // Name for the project to display in the web app
+  "name": "Sleep Survey",
+
+  // Text displayed within the project tile on the landing page
+  "tileText": "Sleep survey and activities",
+
+  // Image for this project displayed on the landing page
+  "imageUrl": "/data/images/bigstock-Exhausted-Young-Businessman-Or-375803701.jpg",
+
+  // Which pages to display on the project landing page
+  "pages": {
+    "survey": true,
+    "scientists": true,
+    "graphs": true,
+    "demo": true,
+    "teacher-resources": true,
+    "download": true,
+    "partners": true,
+    "contact": true
+  },
+
+  // Configuration for the survey
+  "survey": {
+    "heading": "How did you sleep?",
+    "introduction": "**Teachers:** To create a unique identifier for your class or school, click [here](/data/identifier). Give that identifier to your students so they can enter it for this survey.\n\n**Students/Others:** Please do not enter any personal information into the survey. No personal identifiers are collected.\n\n**Required Fields:** Are noted with an asterisk ( * ). Unless noted, answer questions thinking about **the past week**.",
+    "sections": [
+      {
+        "id": "Weekdays",
+        "heading": "Weekdays (required)",
+        "introduction": "**Weekdays (Sunday-Thursday nights). Please answer all questions in this section. Remember, think about these in context of the past week.**"
+      },
+      {
+        "id": "Weekends",
+        "heading": "Weekends (required)",
+        "introduction": "**Weekends (Friday and Saturday nights). Please answer all questions in this section. Remember, think about these in context of the past week.**"
+      },
+      {
+        "id": "Caffeine And Diet",
+        "heading": "Caffeine And Diet (optional)",
+        "introduction": "**Caffeine and Diet. This section is optional. Remember, think about these in context of the past week.**"
+      },
+      {
+        "id": "Technology Use",
+        "heading": "Technology Use (optional)",
+        "introduction": "**Technology Use. This section is optional. Remember, think about these in context of the past week.**"
+      },
+      {
+        "id": "Physical Activity",
+        "heading": "Physical Activity (optional)",
+        "introduction": "**Physical Activity. This section is optional. Remember, think about these in context of the past week.**\n\nHow many days did you do sport/physical activity at the following times:"
+      },
+      {
+        "id": "School",
+        "heading": "School (optional)",
+        "introduction": "**School. This section is optional. Remember, think about these in context of the past week.**\n\nHow many days did you study/do homework at the following times:"
+      },
+      {
+        "id": "Health & Wellbeing",
+        "heading": "Health & Wellbeing (optional)",
+        "introduction": "**Health & Wellbeing. This section is optional. Remember, think about these in context of the past week.**"
+      }
+    ]
+  },
+
+  // Configuration for the demo page
+  "demo": {
+    "graphs": [
+      // Several charts with the same data for comparison
+      {
+        "heading": "Bar Graph",
+        "type": "bar",
+        "questions": ["q7"] // How rested do you feel
+      },
+      {
+        "heading": "Column Graph",
+        "type": "column",
+        "questions": ["q7"] // How rested do you feel
+      },
+      {
+        "heading": "Pie Chart",
+        "type": "pie",
+        "questions": ["q7"] // How rested do you feel
+      },
+      {
+        "heading": "Scatter Graph",
+        "type": "scatter",
+        "questions": [
+          "q21", // After falling asleep how long do you spend awake during the night? (Weekdays)
+          "q7" // How rested or refreshed do you feel when you wake up for the day? (Weekdays)
+        ]
+      },
+      // Histogram
+      {
+        "heading": "Histogram for Age Responses",
+        "type": "histogram",
+        "questions": ["q2"], // Age
+        "interval": 10
+      },
+      // Word cloud
+      {
+        "heading": "Word Cloud for Country Responses",
+        "type": "word-cloud",
+        "questions": ["q1"] // Country
+      }
+    ]
+  },
+
+  "charts": {
+    // Configuration for parallel box plots
+    "parallelBoxPlot": {
+      "gender": {
+        "question": "q58"
+      },
+      "age": {
+        "question": "q2",
+        "interval": 10
+      }
+    }
+  },
+
+  "questions": [
+    // Initial questions
+    {
+      "id": "q1",
+      "text": "In which country are you currently located?",
+      "type": "country",
+      "required": true
+    },
+    {
+      "id": "q16",
+      "text": "In which city are you currently located?",
+      "type": "freetext",
+      "required": true
+    },
+    {
+      "id": "q2",
+      "text": "How old are you?",
+      "surveyText": "How old are you (in years)?",
+      "xAxisLabel": "Age",
+      "type": "number",
+      "min": 0,
+      "max": 200,
+      "required": true
+    },
+    {
+      "id": "q58",
+      "text": "What is your gender?",
+      "type": "enum",
+      "values": ["Male", "Female", "Non-binary", "Prefer not to say"],
+      "required": true
+    },
+    {
+      "id": "q17",
+      "text": "During your daytime activities, how much of a problem do you have with sleepiness?",
+      "type": "number",
+      "min": 0,
+      "max": 4,
+      "values": [
+        { "value": 0, "label": "No problem at all" },
+        { "value": 1, "label": "A little problem" },
+        { "value": 2, "label": "More than a little problem" },
+        { "value": 3, "label": "A big problem" },
+        { "value": 4, "label": "A very big problem" }
+      ],
+      "required": true
+    },
+
+    // Weekdays
+    {
+      "id": "q11",
+      "text": "What time do you try to go to sleep?",
+      "xAxisLabel": "Hour of Day",
+      "type": "timeOfDay",
+      "required": true,
+      "section": "Weekdays"
+    },
+    {
+      "id": "q18",
+      "text": "What is the main reason you go to bed at this time on weekdays?",
+      "surveyText": "What is the **main reason** you go to bed at this time on weekdays?",
+      "type": "enum",
+      "values": [
+        "My parent / carer has set my bedtime",
+        "I feel sleepy",
+        "I finish my homework",
+        "My TV shows are over",
+        "My brother or sister go to bed",
+        "I finish socialising",
+        "I get home from my job",
+        "Other"
+      ],
+      "required": true,
+      "section": "Weekdays"
+    },
+    {
+      "id": "q19",
+      "text": "How long does it take you to fall asleep?",
+      "surveyText": "How long does it take you to fall asleep (in minutes)?",
+      "xAxisLabel": "Minutes",
+      "type": "number",
+      "min": 0,
+      "max": 240,
+      "required": true,
+      "section": "Weekdays"
+    },
+    {
+      "id": "q15",
+      "text": "What time do you wake up?",
+      "xAxisLabel": "Hour of Day",
+      "type": "timeOfDay",
+      "required": true,
+      "section": "Weekdays"
+    },
+    {
+      "id": "q20",
+      "text": "What is the main reason you wake up at this time on weekdays?",
+      "surveyText": "What is the **main reason** you wake up at this time on weekdays?",
+      "type": "enum",
+      "values": [
+        "Noises or my pet wakes me up",
+        "My alarm clock wakes me up",
+        "My parent/carer or another family member wakes me up",
+        "I need to go to the bathroom",
+        "I don’t know, I just wake up",
+        "Other"
+      ],
+      "required": true,
+      "section": "Weekdays"
+    },
+    {
+      "id": "q21",
+      "text": "After falling asleep how long do you spend awake during the night?",
+      "surveyText": "After falling asleep how long do you spend awake during the night (in minutes)?",
+      "xAxisLabel": "Minutes",
+      "type": "number",
+      "min": 0,
+      "max": 240,
+      "required": true,
+      "section": "Weekdays"
+    },
+    {
+      "id": "q5",
+      "text": "How would you rate the quality of your sleep?",
+      "xAxisLabel": "Rating (Out of 5)",
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "values": [
+        { "value": 1, "label": "Very Poor" },
+        { "value": 2, "label": "Poor" },
+        { "value": 3, "label": "Fair" },
+        { "value": 4, "label": "Good" },
+        { "value": 5, "label": "Very Good" }
+      ],
+      "required": true,
+      "section": "Weekdays"
+    },
+    {
+      "id": "q59",
+      "text": "What external factors influenced how well you slept last night?",
+      "surveyText": "What is the **main external factor** that influenced how well you slept last night?",
+      "type": "enum",
+      "values": [
+        "Family/people disturbance",
+        "Pet disturbance",
+        "Noises outside your home",
+        "Room too hot/cold",
+        "Phone/technology noise or light",
+        "Other",
+        "None"
+      ],
+      "required": true,
+      "section": "Weekdays"
+    },
+    {
+      "id": "q7",
+      "text": "How rested or refreshed do you feel when you wake up for the day?",
+      "xAxisLabel": "Rating (Out of 5)",
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "values": [
+        { "value": 1, "label": "Not at all rested" },
+        { "value": 2, "label": "Slightly rested" },
+        { "value": 3, "label": "Somewhat rested" },
+        { "value": 4, "label": "Well-rested" },
+        { "value": 5, "label": "Very-well rested" }
+      ],
+      "required": true,
+      "section": "Weekdays"
+    },
+    {
+      "id": "q22",
+      "text": "On average, how long do you nap during each weekday?",
+      "surveyText": "On average, how long do you nap during each weekday (in minutes)?",
+      "xAxisLabel": "Minutes",
+      "type": "number",
+      "min": 0,
+      "max": 240,
+      "required": true,
+      "section": "Weekdays"
+    },
+    {
+      "id": "q23",
+      "text": "What time does your (school) day start?",
+      "xAxisLabel": "Hour of Day",
+      "type": "timeOfDay",
+      "required": true,
+      "section": "Weekdays"
+    },
+
+    // Weekends
+    {
+      "id": "q24",
+      "text": "What time do you try to go to sleep?",
+      "xAxisLabel": "Hour of Day",
+      "type": "timeOfDay",
+      "required": true,
+      "section": "Weekends"
+    },
+    {
+      "id": "q25",
+      "text": "How long does it take you to fall asleep?",
+      "surveyText": "How long does it take you to fall asleep (in minutes)?",
+      "xAxisLabel": "Minutes",
+      "type": "number",
+      "min": 0,
+      "max": 240,
+      "required": true,
+      "section": "Weekends"
+    },
+    {
+      "id": "q26",
+      "text": "What time do you wake up?",
+      "xAxisLabel": "Hour of Day",
+      "type": "timeOfDay",
+      "required": true,
+      "section": "Weekends"
+    },
+    {
+      "id": "q27",
+      "text": "Are you free to wake up when you want on weekends?",
+      "surveyText": "Are you free to wake up when you want on weekends? (You have no morning commitments)",
+      "type": "enum",
+      "values": ["Yes", "No"],
+      "required": true,
+      "section": "Weekends"
+    },
+    {
+      "id": "q28",
+      "text": "After falling asleep how long do you spend awake during the night?",
+      "surveyText": "After falling asleep how long do you spend awake during the night (in minutes)?",
+      "xAxisLabel": "Minutes",
+      "type": "number",
+      "min": 0,
+      "max": 240,
+      "required": true,
+      "section": "Weekends"
+    },
+    {
+      "id": "q29",
+      "text": "How would you rate the quality of your sleep?",
+      "xAxisLabel": "Rating (Out of 5)",
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "values": [
+        { "value": 1, "label": "Very Poor" },
+        { "value": 2, "label": "Poor" },
+        { "value": 3, "label": "Fair" },
+        { "value": 4, "label": "Good" },
+        { "value": 5, "label": "Very Good" }
+      ],
+      "required": true,
+      "section": "Weekends"
+    },
+    {
+      "id": "q30",
+      "text": "How rested or refreshed do you feel when you wake up for the day?",
+      "xAxisLabel": "Rating (Out of 5)",
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "values": [
+        { "value": 1, "label": "Not at all rested" },
+        { "value": 2, "label": "Slightly rested" },
+        { "value": 3, "label": "Somewhat rested" },
+        { "value": 4, "label": "Well-rested" },
+        { "value": 5, "label": "Very-well rested" }
+      ],
+      "required": true,
+      "section": "Weekends"
+    },
+    {
+      "id": "q31",
+      "text": "On average, how long do you nap each Saturday and Sunday?",
+      "surveyText": "On average, how long do you nap each Saturday and Sunday (in minutes)?",
+      "xAxisLabel": "Minutes",
+      "type": "number",
+      "min": 0,
+      "max": 240,
+      "required": true,
+      "section": "Weekends"
+    },
+
+    // Caffeine And Diet
+    {
+      "id": "q32",
+      "text": "How many caffeinated drinks do you have during the day?",
+      "surveyText": "How many caffeinated drinks do you have during the day? (e.g., coffee, tea, soda, energy drinks)",
+      "type": "number",
+      "min": 0,
+      "max": 100,
+      "section": "Caffeine And Diet"
+    },
+    {
+      "id": "q33",
+      "text": "What time do you have your last caffeinated drink?",
+      "surveyText": "What time do you have your **last** caffeinated drink?",
+      "xAxisLabel": "Hour of Day",
+      "type": "timeOfDay",
+      "section": "Caffeine And Diet"
+    },
+
+    // Technology Use
+    {
+      "id": "q34",
+      "text": "Each weekday, how many hours on average do you use technology (outside of school)?",
+      "surveyText": "Each weekday, how many hours on average do you use technology (outside of school)? Include computers, game consoles, iPads, and mobile phones.",
+      "type": "enum",
+      "values": [
+        "1 hour or less",
+        "1-2 hours",
+        "3-4 hours",
+        "5-6 hours",
+        "7-8 hours",
+        "9 or more hours"
+      ],
+      "section": "Technology Use"
+    },
+    {
+      "id": "q35",
+      "text": "How often do you use technology during the last hour before you go to sleep?",
+      "surveyText": "How often do you use technology during the last hour before you go to sleep? Include technology like a computer, game console, iPad, and mobile phone.",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "values": [
+        { "value": 0, "label": "Never" },
+        { "value": 1, "label": "Once in a while" },
+        { "value": 2, "label": "Sometimes" },
+        { "value": 3, "label": "Quite often" },
+        { "value": 4, "label": "Frequently if not always" },
+        { "value": 5, "label": "Always" }
+      ],
+      "section": "Technology Use"
+    },
+    {
+      "id": "q36",
+      "text": "How often do you use technology after you have gone to bed?",
+      "surveyText": "How often do you use technology after you have gone to bed? Include technology like a computer, game console, iPad, and mobile phone.",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "values": [
+        { "value": 0, "label": "Never" },
+        { "value": 1, "label": "Once in a while" },
+        { "value": 2, "label": "Sometimes" },
+        { "value": 3, "label": "Quite often" },
+        { "value": 4, "label": "Frequently if not always" },
+        { "value": 5, "label": "Always" }
+      ],
+      "section": "Technology Use"
+    },
+    {
+      "id": "q37",
+      "text": "How often do you wake up at night from notifications?",
+      "surveyText": "How often do you wake up at night from notifications? Include notifications from SMS, Instagram, Facebook and other programs.",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "values": [
+        { "value": 0, "label": "Never" },
+        { "value": 1, "label": "Once in a while" },
+        { "value": 2, "label": "Sometimes" },
+        { "value": 3, "label": "Quite often" },
+        { "value": 4, "label": "Frequently if not always" },
+        { "value": 5, "label": "Always" }
+      ],
+      "section": "Technology Use"
+    },
+
+    // Physical Activity
+    {
+      "id": "q38",
+      "text": "How many days did you do sport/physical activity in the morning before school?",
+      "surveyText": "in the morning before school (0-5)?",
+      "xAxisLabel": "Days",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "section": "Physical Activity"
+    },
+    {
+      "id": "q39",
+      "text": "How many days did you do sport/physical activity in the afternoon after school?",
+      "surveyText": "in the afternoon after school (0-5)?",
+      "xAxisLabel": "Days",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "section": "Physical Activity"
+    },
+    {
+      "id": "q40",
+      "text": "How many days did you do sport/physical activity in the evening on school days?",
+      "surveyText": "in the evening on days that you have school (0-5)?",
+      "xAxisLabel": "Days",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "section": "Physical Activity"
+    },
+    {
+      "id": "q41",
+      "text": "How many days did you do sport/physical activity on the weekend?",
+      "surveyText": "on the weekend (0-2)?",
+      "xAxisLabel": "Days",
+      "type": "number",
+      "min": 0,
+      "max": 2,
+      "section": "Physical Activity"
+    },
+    {
+      "id": "q42",
+      "text": "If you did not have your sports or physical activity, would you go to bed earlier or later?",
+      "surveyText": "If you did not have your sports or physical activity, would you go to bed:",
+      "type": "enum",
+      "values": [
+        "Earlier than you usually do",
+        "The same as you usually do",
+        "Later than you usually do"
+      ],
+      "section": "Physical Activity"
+    },
+    {
+      "id": "q43",
+      "text": "If you did not have your sports or physical activity, would you wake up earlier or later?",
+      "surveyText": "If you did not have your sports or physical activity, would you wake up:",
+      "type": "enum",
+      "values": [
+        "Earlier than you usually do",
+        "The same as you usually do",
+        "Later than you usually do"
+      ],
+      "section": "Physical Activity"
+    },
+
+    // School
+    {
+      "id": "q44",
+      "text": "How many days did you study/do homework in the morning before school?",
+      "surveyText": "in the morning before school (0-5)?",
+      "xAxisLabel": "Days",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "section": "School"
+    },
+    {
+      "id": "q45",
+      "text": "How many days did you study/do homework in the afternoon after school?",
+      "surveyText": "in the afternoon after school (0-5)?",
+      "xAxisLabel": "Days",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "section": "School"
+    },
+    {
+      "id": "q46",
+      "text": "How many days did you study/do homework in the evening on days that you have school?",
+      "surveyText": "in the evening on days that you have school (0-5)?",
+      "xAxisLabel": "Days",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "section": "School"
+    },
+    {
+      "id": "q47",
+      "text": "How many days did you study/do homework on the weekend?",
+      "surveyText": "on the weekend (0-2)?",
+      "xAxisLabel": "Days",
+      "type": "number",
+      "min": 0,
+      "max": 2,
+      "section": "School"
+    },
+    {
+      "id": "q48",
+      "text": "How many hours did you study/do homework?",
+      "xAxisLabel": "Hours",
+      "type": "number",
+      "min": 0,
+      "max": 100,
+      "section": "School"
+    },
+    {
+      "id": "q49",
+      "text": "How often have you arrived late to class because you overslept?",
+      "type": "enum",
+      "values": ["Never", "Once", "Twice", "Several Times", "Everyday"],
+      "section": "School"
+    },
+    {
+      "id": "q50",
+      "text": "Currently, what are your grades in school mostly?",
+      "surveyText": "Currently, are your grades in school **mostly**?",
+      "type": "enum",
+      "values": [
+        "A’s",
+        "A’s and B’s",
+        "B’s",
+        "B’s and C’s",
+        "C’s",
+        "C’s and D’s",
+        "D’s",
+        "D’s and F’s"
+      ],
+      "section": "School"
+    },
+
+    // Health & Wellbeing
+    {
+      "id": "q51",
+      "text": "If you compare yourself to other people your age, how would you describe your health?",
+      "type": "number",
+      "min": 1,
+      "max": 4,
+      "values": [
+        { "value": 1, "label": "Poor" },
+        { "value": 2, "label": "Fair" },
+        { "value": 3, "label": "Good" },
+        { "value": 4, "label": "Excellent" }
+      ],
+      "section": "Health & Wellbeing"
+    },
+    {
+      "id": "q52",
+      "text": "How often do I go to bed and think about things I need to do?",
+      "surveyText": "I go to bed and think about things I need to do:",
+      "xAxisLabel": "Rating (Out of 5)",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "values": [
+        { "value": 0, "label": "Never" },
+        { "value": 1, "label": "Once in a while" },
+        { "value": 2, "label": "Sometimes" },
+        { "value": 3, "label": "Quite often" },
+        { "value": 4, "label": "Frequently if not always" },
+        { "value": 5, "label": "Always" }
+      ],
+      "section": "Health & Wellbeing"
+    },
+    {
+      "id": "q53",
+      "text": "How often do I go to bed and replay the day’s events over and over in my mind?",
+      "surveyText": "I go to bed and replay the day’s events over and over in my mind:",
+      "xAxisLabel": "Rating (Out of 5)",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "values": [
+        { "value": 0, "label": "Never" },
+        { "value": 1, "label": "Once in a while" },
+        { "value": 2, "label": "Sometimes" },
+        { "value": 3, "label": "Quite often" },
+        { "value": 4, "label": "Frequently if not always" },
+        { "value": 5, "label": "Always" }
+      ],
+      "section": "Health & Wellbeing"
+    },
+    {
+      "id": "q54",
+      "text": "How often do I check my clock several times during the night?",
+      "surveyText": "I check my clock several times during the night:",
+      "xAxisLabel": "Rating (Out of 5)",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "values": [
+        { "value": 0, "label": "Never" },
+        { "value": 1, "label": "Once in a while" },
+        { "value": 2, "label": "Sometimes" },
+        { "value": 3, "label": "Quite often" },
+        { "value": 4, "label": "Frequently if not always" },
+        { "value": 5, "label": "Always" }
+      ],
+      "section": "Health & Wellbeing"
+    },
+    {
+      "id": "q55",
+      "text": "During the 1 hour before bedtime, how often do things happen that make me feel strong emotions?",
+      "surveyText": "During the 1 hour before bedtime, how often do things happen that make me feel strong emotions? Include such emotions as sadness, anger, and/or excitement.",
+      "xAxisLabel": "Rating (Out of 5)",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "values": [
+        { "value": 0, "label": "Never" },
+        { "value": 1, "label": "Once in a while" },
+        { "value": 2, "label": "Sometimes" },
+        { "value": 3, "label": "Quite often" },
+        { "value": 4, "label": "Frequently if not always" },
+        { "value": 5, "label": "Always" }
+      ],
+      "section": "Health & Wellbeing"
+    },
+    {
+      "id": "q56",
+      "text": "How often do I go to bed feeling upset?",
+      "surveyText": "I go to bed feeling upset:",
+      "xAxisLabel": "Rating (Out of 5)",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "values": [
+        { "value": 0, "label": "Never" },
+        { "value": 1, "label": "Once in a while" },
+        { "value": 2, "label": "Sometimes" },
+        { "value": 3, "label": "Quite often" },
+        { "value": 4, "label": "Frequently if not always" },
+        { "value": 5, "label": "Always" }
+      ],
+      "section": "Health & Wellbeing"
+    },
+    {
+      "id": "q57",
+      "text": "How often do I go to bed and worry about things happening at home or at school?",
+      "surveyText": "I go to bed and worry about things happening at home or at school:",
+      "xAxisLabel": "Rating (Out of 5)",
+      "type": "number",
+      "min": 0,
+      "max": 5,
+      "values": [
+        { "value": 0, "label": "Never" },
+        { "value": 1, "label": "Once in a while" },
+        { "value": 2, "label": "Sometimes" },
+        { "value": 3, "label": "Quite often" },
+        { "value": 4, "label": "Frequently if not always" },
+        { "value": 5, "label": "Always" }
+      ],
+      "section": "Health & Wellbeing"
+    }
+  ]
+}
