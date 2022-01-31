@@ -127,7 +127,7 @@ class Graph(ErrorHandling):
         return self.title_main
 
     @error
-    def set_titles(self, ax, title, title_y="", title_x=""):
+    def set_titles(self, ax, title, title_x="", title_y=""):
         """
         Sets the titles of the graph that is being created
 
@@ -280,6 +280,8 @@ class Categorical(Graph):
         data = self.get_data()
         labels = self.labels
         title_main = self.get_title_main()
+        title_x = self.get_title_x()
+        title_y = self.get_title_y()
 
         total = np.sum(data)
         if total != 1:
@@ -288,7 +290,7 @@ class Categorical(Graph):
         fig, ax = plt.subplots()
         text_args = dict(fontsize=10, weight='bold', color='black')
         ax.pie(data, labels=labels, shadow=True, autopct='%1.1f%%', textprops=text_args)
-        ax = Graph.set_titles(self, ax=ax, title=title_main)
+        ax = Graph.set_titles(self, ax, title_main, title_x, title_y)
 
         plt.show()
         self.graph_type = "graph_pie"
@@ -321,10 +323,12 @@ class Other(Graph):
         data_x = self.get_data_x()
         data_y = self.get_data_y()
         title_main = self.get_title_main()
+        title_x = self.get_title_x()
+        title_y = self.get_title_y()
 
         fig, ax = plt.subplots()
         ax = sns.regplot(x=data_x, y=data_y, line_kws={"color": "r", "alpha": 0.7, "lw": 3}, fit_reg=False)
-        ax.set_title(title_main)
+        ax = Graph.set_titles(self, ax, title_main, title_x, title_y)
         plt.show()
 
     @error
@@ -346,11 +350,13 @@ class Other(Graph):
 
         data = self.get_data()
         title_main = self.get_title_main()
+        title_x = self.get_title_x()
+        title_y = self.get_title_y()
 
         fig, ax = plt.subplots()
         ax = sns.boxplot(x=data)
         # ax.boxplot(data)
-        ax.set_title(title_main)
+        ax = Graph.set_titles(self, ax, title_main, title_x, title_y)
         plt.show()
 
     @error
@@ -374,6 +380,8 @@ class Other(Graph):
 
         data = self.get_data()
         title_main = self.get_title_main()
+        title_x = self.get_title_x()
+        title_y = self.get_title_y()
 
         fig, ax = plt.subplots()
         # Build a "density" function based on the dataset
@@ -392,7 +400,7 @@ class Other(Graph):
             plt.fill_between(xs, density(xs), color="#69b3a2", alpha=0.4)
         else:
             plt.plot(xs, density(xs))
-        plt.title(title_main)
+        ax = Graph.set_titles(self, ax, title_main, title_x, title_y)
         plt.show()
 
     @error
@@ -415,9 +423,11 @@ class Other(Graph):
 
         data = self.get_data()
         title_main = self.get_title_main()
+        title_x = self.get_title_x()
+        title_y = self.get_title_y()
 
         sns.violinplot(y=data)
-        plt.title(title_main)
+        ax = Graph.set_titles(self, ax, title_main, title_x, title_y)
         plt.show()
 
     @error
@@ -438,10 +448,13 @@ class Other(Graph):
 
         data = self.get_data()
         title_main = self.get_title_main()
+        title_x = self.get_title_x()
+        title_y = self.get_title_y()
 
         fig, ax = plt.subplots()
         x = range(1,len(data)+1)
         ax.stem(x, data)
+        ax = Graph.set_titles(self, ax, title_main, title_y, title_x)
         plt.show()
 
     @error

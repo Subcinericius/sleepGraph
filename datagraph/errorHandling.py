@@ -36,7 +36,7 @@ class ErrorHandling(object):
                         f"The most likely cause is that their is no data entered "
                         f"or the data is not numerical.\n\n")
                     print(f"##############FULL ERROR##############\n")
-                    log.exception(f"Exception in {handler.__name__}")
+                    # log.exception(f"Exception in {handler.__name__}")
                     print(f"{e}\n"
                           f"##############END ERROR##############\n\n")  # add custom messages here
             elif handler.__name__ in ("get_title_main", "get_title_y", "get_title_x"):
@@ -47,7 +47,7 @@ class ErrorHandling(object):
                         f"Error: Something Went Wrong in executing {handler.__name__}. Please check if you have recieved any "
                         f"warnings and adjust the code to suit. The most likely error is that their was no title name entered\n\n "
                         f"##############FULL ERROR##############\n")
-                    log.exception(f"Exception in {handler.__name__}")
+                    # log.exception(f"Exception in {handler.__name__}")
                     print(f"{e}\n"
                           f"##############END ERROR##############\n\n")  # add custom messages here
             elif handler.__name__ in ("graph_bar"):
@@ -57,7 +57,7 @@ class ErrorHandling(object):
                     print(
                         f"Error: Something Went Wrong in executing {handler.__name__}. Please check if you have recieved any "
                         f"warnings and adjust the code to suit. \n##############FULL ERROR##############\n\n")
-                    log.exception(f"Exception in {handler.__name__}")
+                    # log.exception(f"Exception in {handler.__name__}")
                     print(f"{e}\n##############END ERROR##############\n\n")  # add custom messages here
             else:
                 try:
