@@ -3,7 +3,7 @@ from functools import wraps
 import sys
 import traceback
 
-
+printError = False
 # General Error Handling
 # Need to add error handling for every method
 
@@ -16,15 +16,15 @@ class ErrorHandling(object):
     The Class deals with all expected and unexpected errors that could be caused by the modules in graph.
     Any errors that occur will be caught and a custom error will be printed, the full stack trace will also be printed.
     """
-    def _handle_error(handler):
+    def _handle_error(handler): #This is the decorator that deals with any errors. Essentially all functions are run in here and errors are dealt with in it.
         """
         A decorator that deals will all of the errors.
         """
-        log = logging.getLogger(__name__)
+        log = logging.getLogger(__name__) #This is used to catch the full stack trace errors.
 
-        @wraps(handler)
-        def inner_func(self, *args, **kwargs):
-            if handler.__name__ in ("get_data", "get_data_y", "get_data_x"):
+        @wraps(handler) #This is using the functools wraps decorator, this is a fix so that the docstrings are not hidden by the decorator
+        def inner_func(self, *args, **kwargs): #Inside here all of the errors are split up and handled seperatly
+            if handler.__name__ in ("get_data", "get_data_y", "get_data_x"): 
                 print(f"Handling Error, {handler.__name__}")
                 try:
                     return handler(self, *args, **kwargs)  # Call the function:
@@ -36,7 +36,7 @@ class ErrorHandling(object):
                         f"The most likely cause is that their is no data entered "
                         f"or the data is not numerical.\n\n")
                     print(f"##############FULL ERROR##############\n")
-                    # log.exception(f"Exception in {handler.__name__}")
+                    if printError: log.exception(f"Exception in {handler.__name__}")
                     print(f"{e}\n"
                           f"##############END ERROR##############\n\n")  # add custom messages here
             elif handler.__name__ in ("get_title_main", "get_title_y", "get_title_x"):
@@ -47,7 +47,7 @@ class ErrorHandling(object):
                         f"Error: Something Went Wrong in executing {handler.__name__}. Please check if you have recieved any "
                         f"warnings and adjust the code to suit. The most likely error is that their was no title name entered\n\n "
                         f"##############FULL ERROR##############\n")
-                    # log.exception(f"Exception in {handler.__name__}")
+                    if printError: log.exception(f"Exception in {handler.__name__}")
                     print(f"{e}\n"
                           f"##############END ERROR##############\n\n")  # add custom messages here
             elif handler.__name__ in ("graph_bar"):
@@ -56,17 +56,20 @@ class ErrorHandling(object):
                 except Exception as e:
                     print(
                         f"Error: Something Went Wrong in executing {handler.__name__}. Please check if you have recieved any "
-                        f"warnings and adjust the code to suit. \n##############FULL ERROR##############\n\n")
-                    # log.exception(f"Exception in {handler.__name__}")
+                        f"warnings and adjust the code to suit." 
+                        f"The most likely cause is that no data has been entered. Please check if data was entered when creating the" 
+                        f"Categorical object or calling the graph_bar function!"
+                        f"\n##############FULL ERROR##############\n\n")
+                    if printError: log.exception(f"Exception in {handler.__name__}")
                     print(f"{e}\n##############END ERROR##############\n\n")  # add custom messages here
-            else:
+            else: #This block deals with all other errors that occur that are not specified above
                 try:
                     return handler(self, *args, **kwargs)  # Call the function:
                 except Exception as e:
                     print(
                         f"Error: Something Went Wrong in executing {handler.__name__}. Please check if you have recieved any "
                         f"warnings and adjust the code to suit. \n##############FULL ERROR##############\n\n")
-                    log.exception(f"Exception in {handler.__name__}")
+                    if printError: log.exception(f"Exception in {handler.__name__}")
                     print(f"{e}\n##############END ERROR##############\n\n")  # add custom messages here
             print("End Handelling\n")
         return inner_func
@@ -138,19 +141,3 @@ def check_data(data, name, **kwargs):
 
     except Exception:
         raise Exception("An Error Occurred in function (check_data)")
-
-# error = ErrorHandelling._handle_error
-#
-# class Test(ErrorHandelling):
-#     @error
-#     def bar(self, text):
-#         print("normal call in other class")
-#
-#     @error
-#     def other(self):
-#         print("testing")
-#
-#
-# test = Test()
-# test.bar(text="hello")
-# test.other()

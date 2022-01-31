@@ -6,12 +6,14 @@ from scipy.stats import gaussian_kde
 from .errorHandling import *
 
 
-error = ErrorHandling._handle_error
+error = ErrorHandling._handle_error #Creating a simple way to access the errorHandling decorator
 
 
 # Adding Graph Interactivity With mpdld3 and pygal
 #add pyreverse uml diagram
 
+#It is to be noted it was decided that all of the data checking would happen or data retrival.
+#This way differnt checking functions wouldn't need to be created for each type of graph, which required differnt types of data.
 
 class Graph(ErrorHandling):
     """This class is a basic Graph object that contains all the relevant attributes of a basic graph
@@ -30,7 +32,7 @@ class Graph(ErrorHandling):
 
     """
 
-    @error
+    @error #Calling the decorator
     def __init__(self, **kwargs):
         """
         The initializer for the Graph object. Note not all the attributes have to be filled upon object creation.
@@ -57,7 +59,7 @@ class Graph(ErrorHandling):
 
         # data, data_x, data_y, title_x, title_y, title_main
 
-    @error
+    @error #Calling the decorator
     def get_data(self):
         """
         Method that will check and return Graphs' data attribute
@@ -69,7 +71,7 @@ class Graph(ErrorHandling):
         check_data(data=self.data, name="data", none=True, list=True, exept=False)
         return self.data
 
-    @error
+    @error #Calling the decorator
     def get_data_y(self):  # Checks Data is None ? Data must be numerical
         """
         Method that will check and return the Graphs' data_y attribute
@@ -81,7 +83,7 @@ class Graph(ErrorHandling):
         check_data(data=self.data_y, name="data_y", none=True, list=True, exept=False)
         return self.data_y
 
-    @error
+    @error #Calling the decorator
     def get_data_x(self):
         """
         Method that will check and return the Graphs' data_x attribute
@@ -93,7 +95,7 @@ class Graph(ErrorHandling):
         check_data(data=self.data_x, name="data_x", none=True, list=True, exept=False)
         return self.data_x
 
-    @error
+    @error #Calling the decorator
     def get_title_x(self):
         """
        Method that will check and return the Graphs' title_x attribute
@@ -104,7 +106,7 @@ class Graph(ErrorHandling):
        """
         return self.title_x
 
-    @error
+    @error #Calling the decorator
     def get_title_y(self):
         """
        Method that will check and return the Graphs' title_y attribute
@@ -115,7 +117,7 @@ class Graph(ErrorHandling):
        """
         return self.title_y
 
-    @error
+    @error #Calling the decorator
     def get_title_main(self):
         """
        Method that will check and return the Graphs' title_main attribute
@@ -126,7 +128,7 @@ class Graph(ErrorHandling):
        """
         return self.title_main
 
-    @error
+    @error #Calling the decorator
     def set_titles(self, ax, title, title_x="", title_y=""):
         """
         Sets the titles of the graph that is being created
@@ -142,7 +144,7 @@ class Graph(ErrorHandling):
         ax.set_title(title)
         return ax
 
-    @error
+    @error #Calling the decorator
     def single_data(self):
         if not (self.data is None):
             data = self.data
@@ -154,7 +156,7 @@ class Graph(ErrorHandling):
             raise Exception("No Inputted Data to Graph")
         return data
 
-    @error
+    @error #Calling the decorator
     def update_vars(self, **kwargs):  # add Excepions Here
         """
         updates the attributes of the graph class
@@ -168,6 +170,9 @@ class Graph(ErrorHandling):
 
         :return: This method returns nothing
         """
+        
+        #These Lines essentialy see if new data has been entered, if the data has not the value remains the same
+        #as when the Categorical object was intialised 
         self.data = kwargs.get("data") or self.data
         self.data_x = kwargs.get("data_x") or self.data_x
         self.data_y = kwargs.get("data_y") or self.data_y
@@ -176,7 +181,7 @@ class Graph(ErrorHandling):
         self.title_y = kwargs.get("title_y") or self.title_y
 
 
-class Categorical(Graph):
+class Categorical(Graph): #This class extends all of the Graph classes functionality but adds labels
     """
     Categorical graph class that inherits all of the Graph classes' attributes and methods and enables the graphing of
     categorical data. The attributes of the class should never be directly accessed. They should instead be updated
@@ -199,11 +204,11 @@ class Categorical(Graph):
 
     """
     def __init__(self, labels=None, **kwargs):
-        super().__init__(**kwargs)
-        self.labels = labels
+        super().__init__(**kwargs) #Call the Graph init method
+        self.labels = labels #Add labels as an attribute
 
-    @error
-    def update_vars(self, **kwargs):
+    @error #Calling the decorator
+    def update_vars(self, **kwargs): #Overwrite the default method inherited to include updating the labels
         """
         Updates the attributes of the categorical Graph object with inputted kwargs
 
@@ -220,7 +225,7 @@ class Categorical(Graph):
         self.labels = kwargs.get("labels") or self.labels
         Graph.update_vars(self, **kwargs)
 
-    @error
+    @error #Calling the decorator
     def get_labels(self):
         """
         Checks the labels variable to see if it is not None, print warning and returns the attribute.
@@ -228,7 +233,7 @@ class Categorical(Graph):
         """
         return self.labels
 
-    @error
+    @error #Calling the decorator
     def graph_bar(self, **kwargs):
         """
         Generates a bar graph from a combination of the data entered and the attributes of the Categorical Object.
@@ -241,29 +246,27 @@ class Categorical(Graph):
             :keyword labels: stores the labels use to name the different classes of data
         :return: Nothing is returned
         """
-        self.update_vars(**kwargs)
+        self.update_vars(**kwargs) #Update the attributes
 
+        #Getting all of the data
         data = self.get_data()
         labels = self.labels
         title_main = self.get_title_main()
         title_x = self.get_title_x()
         title_y = self.get_title_y()
 
-        d = self.get_data()
-        # print(f"in graph_bar {d}")
-        data_y = np.arange(len(data))
-        fig, ax = plt.subplots()  # was subplots
-        hbars = ax.barh(data_y, data, align='center')
+        data_y = np.arange(len(data)) #Create a list of ints the length of data
+        fig, ax = plt.subplots()  # create a subplot
+        hbars = ax.barh(data_y, data, align='center') #Graph the bar chart
 
-        if not (labels is None):
+        if not (labels is None): #Check if the labels attribute has been entered
             ax.set_yticks(ticks=data_y)
             ax.set_yticklabels(labels)
-        ax.invert_yaxis()
-        ax = Graph.set_titles(self, ax, title_main, title_x, title_y)
-        self.fig = fig
+        ax.invert_yaxis() #Inverts the graph so that it is a horizontal bar chart
+        ax = Graph.set_titles(self, ax, title_main, title_x, title_y) #sets the titles for the chart
         plt.show()
 
-    @error
+    @error #Calling the decorator
     def graph_pie(self, **kwargs):
         """
         Generates a pie graph using a combination of the data entered and the preset attributes of the Categorical
@@ -275,36 +278,35 @@ class Categorical(Graph):
             :keyword title_main: stores the main title for the graph defaults to [""]
         :return: Nothing is returned
         """
-        self.update_vars(**kwargs)
+        self.update_vars(**kwargs) #Update the attributes
 
+        #Getting the Data
         data = self.get_data()
         labels = self.labels
         title_main = self.get_title_main()
         title_x = self.get_title_x()
         title_y = self.get_title_y()
 
-        total = np.sum(data)
-        if total != 1:
+        total = np.sum(data) #Getting the sum of the data so that percentages can be calculated
+        if total != 1: #If the total = 1 then the data is already in the format needed
             for i in range(len(data)):
                 data[i] = data[i] / total * 100
         fig, ax = plt.subplots()
-        text_args = dict(fontsize=10, weight='bold', color='black')
-        ax.pie(data, labels=labels, shadow=True, autopct='%1.1f%%', textprops=text_args)
-        ax = Graph.set_titles(self, ax, title_main, title_x, title_y)
-
+        text_args = dict(fontsize=10, weight='bold', color='black') #Create an arguments dictionary for font properties
+        ax.pie(data, labels=labels, shadow=True, autopct='%1.1f%%', textprops=text_args) #Create the pie chart
+        ax = Graph.set_titles(self, ax, title_main) #Set the titles for the chart
         plt.show()
-        self.graph_type = "graph_pie"
 
-    @error
+    @error #Calling the decorator
     def replot(self):
         pass
 
 
-class Other(Graph):
+class Other(Graph): #Class extends the graph class
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(**kwargs) #Call the other classes super method
 
-    @error
+    @error #Calling the decorator
     def graph_scatter(self, **kwargs):
         """
         Generates a scatter graph using a combination of the data entered and the preset attributes of the Categorical
@@ -318,8 +320,10 @@ class Other(Graph):
             :keyword title_y: stores the y-axis title defaults to [self.title_y] or [""]
             :keyword title_main: stores the main title for the graph defaults to [self.title_main] or [""]
         """
+        #Updating the variables
         self.update_vars(**kwargs)
 
+        #Getting all of the data
         data_x = self.get_data_x()
         data_y = self.get_data_y()
         title_main = self.get_title_main()
@@ -327,11 +331,11 @@ class Other(Graph):
         title_y = self.get_title_y()
 
         fig, ax = plt.subplots()
-        ax = sns.regplot(x=data_x, y=data_y, line_kws={"color": "r", "alpha": 0.7, "lw": 3}, fit_reg=False)
-        ax = Graph.set_titles(self, ax, title_main, title_x, title_y)
+        ax = sns.regplot(x=data_x, y=data_y, line_kws={"color": "r", "alpha": 0.7, "lw": 3}, fit_reg=False) #Create a plot using seaborn
+        ax = Graph.set_titles(self, ax, title_main, title_x, title_y) #Set Graph titles
         plt.show()
 
-    @error
+    @error #Calling the decorator
     def graph_box(self, **kwargs):
         """
         Generates a box plot sing a combination of the data entered and the preset attributes of the Categorical
@@ -346,21 +350,25 @@ class Other(Graph):
         :param kwargs:
         :return: Nothing is returned
         """
+        #Updates attributes
         self.update_vars(**kwargs)
 
+        #Get required data
         data = self.get_data()
         title_main = self.get_title_main()
         title_x = self.get_title_x()
         title_y = self.get_title_y()
 
+        
         fig, ax = plt.subplots()
-        ax = sns.boxplot(x=data)
+        ax = sns.boxplot(x=data) #Create a boxplot using seaborn
         # ax.boxplot(data)
-        ax = Graph.set_titles(self, ax, title_main, title_x, title_y)
+        ax = Graph.set_titles(self, ax, title_main, title_x=title_x)
         plt.show()
 
-    @error
+    @error #Calling the decorator
     def graph_density(self, fill=False, **kwargs):
+        #This solution is taken from here https://www.python-graph-gallery.com/density-chart-matplotlib
         """
             Generates a density plot using a combination of the data entered and the preset attributes of the Categorical
             class.
@@ -375,9 +383,10 @@ class Other(Graph):
             :param kwargs:
             :return: Nothing is returned
         """
-
+        #Updating the attributes
         self.update_vars(**kwargs)
 
+        #Getting required data
         data = self.get_data()
         title_main = self.get_title_main()
         title_x = self.get_title_x()
@@ -397,13 +406,13 @@ class Other(Graph):
         # We're actually building a line chart where x values are set all along the axis and y value are
         # the corresponding values from the density function
         if fill:
-            plt.fill_between(xs, density(xs), color="#69b3a2", alpha=0.4)
+            plt.fill_between(xs, density(xs), color="#69b3a2", alpha=0.4) #Shade under the density curve
         else:
-            plt.plot(xs, density(xs))
-        ax = Graph.set_titles(self, ax, title_main, title_x, title_y)
+            plt.plot(xs, density(xs)) #Plot the density curve
+        ax = Graph.set_titles(self, ax, title_main, title_x, title_y) #Set the graph titles
         plt.show()
 
-    @error
+    @error #Calling the decorator
     def graph_violin(self, **kwargs):
         """
            Generates a density plot using a combination of the data entered and the preset attributes of the Categorical
@@ -417,20 +426,22 @@ class Other(Graph):
                 :keyword title_main: stores the main title for the graph defaults to [self.title_main] or [""]
            :return: Nothing is returned
        """
+        #Update the attributes
         self.update_vars(**kwargs)
 
         fig, ax = plt.subplots()
-
+        
+        #Get the Required data
         data = self.get_data()
         title_main = self.get_title_main()
         title_x = self.get_title_x()
         title_y = self.get_title_y()
 
-        sns.violinplot(y=data)
-        ax = Graph.set_titles(self, ax, title_main, title_x, title_y)
+        sns.violinplot(y=data) #plot the violin plot
+        ax = Graph.set_titles(self, ax, title_main, title_x, title_y) #Set graph titles
         plt.show()
 
-    @error
+    @error #Calling the decorator
     def graph_loli(self, **kwargs):
         """
            Generates a density plot using a combination of the data entered and the preset attributes of the Categorical
@@ -444,8 +455,10 @@ class Other(Graph):
                :keyword title_main: stores the main title for the graph defaults to [self.title_main] or [""]
            :return: Nothing is returned
        """
+        #Update the attributes
         self.update_vars(**kwargs)
 
+        #Get required data
         data = self.get_data()
         title_main = self.get_title_main()
         title_x = self.get_title_x()
@@ -453,10 +466,10 @@ class Other(Graph):
 
         fig, ax = plt.subplots()
         x = range(1,len(data)+1)
-        ax.stem(x, data)
-        ax = Graph.set_titles(self, ax, title_main, title_y, title_x)
+        ax.stem(x, data)  #Create a stem plot
+        ax = Graph.set_titles(self, ax, title_main, title_y, title_x) #Adding titles to the Graph
         plt.show()
 
-    @error
+    @error #Calling the decorator
     def graph_line(self):
         pass
